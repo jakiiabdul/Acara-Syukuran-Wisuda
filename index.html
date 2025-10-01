@@ -12,6 +12,7 @@
       background: url('https://www.toptal.com/designers/subtlepatterns/uploads/moroccan-flower.png');
       background-color: #fdfdfd;
       color: #333;
+      overflow: hidden; 
     }
     .section {
       padding: 60px 20px;
@@ -40,10 +41,17 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background-image: url('awal.jpg'); /* Latar belakang utama */
+      background-image: url('awal.jpg'); 
       background-size: cover;
       background-position: center;
-      position: relative;
+       /* PENTING: Mengunci posisi cover di atas layar */
+       position: fixed; 
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      /* PENTING: Untuk efek fade out */
+      transition: opacity 1s ease, visibility 1s ease; 
       overflow: hidden;
       box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.4);
       padding: 20px;
@@ -240,7 +248,7 @@
   </style>
 </head>
 <body>
-  <header>
+  <header id="cover-page">
     <div class="vertical-ornament left"></div>
     <div class="vertical-ornament right"></div>
 
@@ -249,19 +257,19 @@
       <h1>Graduation</h1>
       <p class="school-name">ACARA SYUKURAN WISUDA</p>
       <p class="motto">Dr. Iksan M. Saleh, SE., M.Si</p>
-      <p class="motto">"motto hidup papa apa??????"</p>
+      <p class="motto">"Strive not to be a success, but rather to be of value."</p>
       
       <p class="invitation-to">Kepada Yth.</p>
       <p class="guest-name">Tamu Undangan</p>
       
-      <a href="#photo-section" class="open-button">Buka Undangan</a>
+      <button id="open-button-action" class="open-button">Buka Undangan & Putar Lagu</button>
     </div>
     
   </header>
 
   <section class="section photo-section" id="photo-section">
-    <img src="wisuda.jpg" alt="Foto Wisuda" />A
-    <h2>Dalam rangka syukuran atas keberhasilan</h2>
+    <img src="wisuda.jpg" alt="Foto Wisuda" />
+    <h2>Dalam rangka syukuran atas wisuda</h2>
     <strong>Dr. Iksan M. Saleh, SE., M.Si</strong>
     <p>yang telah menyelesaikan studi Program Doktor (S3).</p>
     <p>Dengan penuh rasa syukur, kami sekeluarga memanjatkan terima kasih atas doa, perhatian, dan kehadiran Bapak/Ibu/Saudara/i.
@@ -305,6 +313,33 @@
   </audio>
 
   <script>
+  document.getElementById('open-button-action').addEventListener('click', function() {
+    const coverPage = document.getElementById('cover-page'); 
+    const bgm = document.getElementById('bgm');
+        // 1. Matikan mute dan putar musik
+        bgm.muted = false;
+        bgm.play().catch(error => {
+            console.error("Gagal memutar musik:", error);
+        });
+
+        // 2. Hilangkan cover secara bertahap (Fade Out)
+        coverPage.style.opacity = '0';
+
+        // 3. Setelah transisi selesai (1 detik), hilangkan cover dari layout dan AKTIFKAN SCROLL
+        setTimeout(() => {
+            coverPage.style.visibility = 'hidden';
+            coverPage.style.display = 'none';
+            // PENTING: Mengaktifkan scroll pada body
+             document.body.style.overflow = 'auto'; 
+        }, 1000); // 1000ms sesuai durasi transisi CSS
+ 
+        // 4. Scroll ke bagian foto/konten utama
+        document.getElementById('photo-section').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+
+    }, { once: true });
+
     // Countdown Function (Menggunakan satu kotak teks seperti di kode awal)
     const targetDate = new Date("Oct 4, 2025 11:00:00").getTime();
     const countdownEl = document.getElementById("countdown");
@@ -348,18 +383,7 @@
     }
     showQuote();
     setInterval(showQuote, 4000);
-
-    // Musik autoplay & loop
-    const bgm = document.getElementById('bgm');
-    window.addEventListener('load', () => {
-      bgm.play().then(() => { bgm.muted = false; })
-      .catch(() => { console.log("Autoplay gagal, tunggu interaksi user"); });
-    });
-
-    // Fallback klik halaman supaya musik pasti nyala
-    document.body.addEventListener('click', () => {
-      bgm.play();
-    }, { once: true });
   </script>
 </body>
+
 </html>
