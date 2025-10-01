@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Digital Wisuda</title>
+  <style>
+    /* --- FONT & BODY --- */
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: url('https://www.toptal.com/designers/subtlepatterns/uploads/moroccan-flower.png');
+      background-color: #fdfdfd;
+      color: #333;
+    }
+    .section {
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+    @font-face {
+      font-family: 'Font';
+      src: url('font.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    /* Warna Emas/Cokelat yang Konsisten */
+    :root {
+      --gold-dark: #a87d32;
+      --gold-light: #FFD700;
+      --soft-pink: #f8e8e8; /* Latar belakang untuk Countdown */
+      --deep-red: #8b0000;
+    }
+
+    /* --- HEADER (Gambar 1) --- */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-image: url('awal.jpg'); /* Latar belakang utama */
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.4);
+      padding: 20px;
+    }
+    .header-content {
+      position: relative;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 50px 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 90%;
+      z-index: 5;
+    }
+    .sub-title {
+      font-size: 1.5em;
+      margin-bottom: 5px;
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+    header h1 {
+      font-family: 'Font', cursive;
+      font-size: 3.5em;
+      margin: 0 0 10px 0;
+      color: var(--gold-dark);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      line-height: 1.1;
+    }
+    .school-name {
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-bottom: 20px;
+      padding: 5px 15px;
+      border-top: 2px solid var(--gold-dark);
+      border-bottom: 2px solid var(--gold-dark);
+      display: inline-block;
+      color: #444;
+    }
+    .motto {
+      font-weight: bold;
+      font-size: 1.1em;
+      font-style: italic;
+      margin-bottom: 30px;
+      color: #555;
+    }
+    .guest-name {
+      font-family: 'Font', cursive;
+      font-size: 2em;
+      color: var(--gold-dark);
+      margin-bottom: 20px;
+    }
+    .open-button {
+      padding: 12px 30px;
+      background-color: var(--gold-dark);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      z-index: 5;
+      display: inline-block;
+    }
+    .open-button:hover {
+        background-color: #8c6827;
+    }
+    .vertical-ornament { /* Ornamen sisi kiri & kanan */
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 150px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      z-index: 2;
+      opacity: 0.9;
+    }
+    .vertical-ornament.left {
+      left: 0;
+      background-image: url('bunga_kiri.png');
+    }
+    .vertical-ornament.right {
+      right: 0;
+      background-image: url('bunga_kanan.png');
+    }
+
+    /* --- SECTION SYUKURAN & FOTO (Konten awal Anda) --- */
+    .photo-section img {
+      max-width: 280px;
+      border: 5px solid var(--gold-light);
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    .photo-section strong {
+      font-size: 1.5em;
+      color: #222;
+    }
+    .quotes { /* Quotes rotator */
+      font-style: italic;
+      font-size: 1.4em;
+      color: #444;
+      display: inline-block;
+      margin: 20px auto;
+      padding: 15px 25px;
+      border: 2px dashed rgba(168, 125, 50, 0.7);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.85);
+      max-width: fit-content;
+    }
+
+    /* --- COUNTDOWN SECTION (Menonjol, menggantikan Dress Code) --- */
+    .countdown-section {
+        background-color: var(--soft-pink); /* Latar belakang pink muda/krem */
+        background-image: url('dekorasi_bawah.png'); /* Ornamen daun/Jawa */
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 50px 20px 100px 20px;
+        border-top: 5px solid var(--gold-dark); /* Garis pemisah */
+    }
+    .countdown-title {
+        font-family: 'Font', cursive;
+        color: var(--deep-red);
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    .countdown-box {
+        font-size: 1.8em;
+        padding: 25px;
+        border: 4px solid var(--deep-red);
+        border-radius: 15px;
+        background: white;
+        color: var(--deep-red);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        display: inline-block;
+    }
+
+
+    /* --- DETAIL LOKASI (Gambar 3) --- */
+    .location-section {
+      padding-top: 20px;
+    }
+    .location-box {
+        background: rgba(255,255,255,0.9);
+        margin: 40px auto;
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 500px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .location-box strong {
+      color: var(--gold-dark);
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 4px solid var(--gold-dark);
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+    .map-button {
+      padding: 10px 30px;
+      background-color: var(--gold-dark);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+      margin-top: 15px;
+      display: inline-block;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      background: #222;
+      color: #eee;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.95em;
+      position: relative;
+    }
+    .ornament {
+      position: absolute;
+      width: 100px;
+      opacity: 0.2;
+    }
+    .ornament.top-left { top: 10px; left: 10px; }
+    .ornament.bottom-right { bottom: 10px; right: 10px; }
+    
+    /* --- MOBILE RESPONSIVENESS --- */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.5em; }
+      .vertical-ornament { width: 80px; }
+      .countdown-box { font-size: 1.3em; padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="vertical-ornament left"></div>
+    <div class="vertical-ornament right"></div>
+
+    <div class="header-content">
+      <p class="sub-title">UNDANGAN DIGITAL</p>
+      <h1>Graduation</h1>
+      <p class="school-name">ACARA SYUKURAN WISUDA</p>
+      <p class="motto">Dr. Iksan M. Saleh, SE., M.Si</p>
+      <p class="motto">"motto hidup papa apa??????"</p>
+      
+      <p class="invitation-to">Kepada Yth.</p>
+      <p class="guest-name">Tamu Undangan</p>
+      
+      <a href="#photo-section" class="open-button">Buka Undangan</a>
+    </div>
+    
+  </header>
+
+  <section class="section photo-section" id="photo-section">
+    <img src="wisuda.jpg" alt="Foto Wisuda" />A
+    <h2>Dalam rangka syukuran atas keberhasilan</h2>
+    <strong>Dr. Iksan M. Saleh, SE., M.Si</strong>
+    <p>yang telah menyelesaikan studi Program Doktor (S3).</p>
+    <p>Dengan penuh rasa syukur, kami sekeluarga memanjatkan terima kasih atas doa, perhatian, dan kehadiran Bapak/Ibu/Saudara/i.
+      Semoga kehadiran Anda menambah keberkahan dan kebahagiaan pada momen bersejarah ini.</p>
+  
+    <div class="quotes">
+        <span id="quote-text"></span>
+    </div>
+  </section>
+
+  ---
+
+  <section class="section countdown-section" id="countdown-section">
+      <p class="countdown-title">Menghitung Mundur Hari Bahagia</p>
+      <div class="countdown-box" id="countdown"></div>
+  </section>
+  
+  ---
+  
+  <section class="section location-section" id="location-details">
+    <h2>Waktu dan Tempat Acara</h2>
+    
+    <div class="location-box">
+      <p>Hari/Tanggal: <strong>Sabtu, 04 Oktober 2025</strong></p>
+      <p>Waktu: <strong>11.00 – selesai</strong></p>
+      <p>Tempat: <strong></strong>D'Mozaik Cafe</p>
+      <p style="font-size: 0.9em; margin-top: 5px;">(Kayu Merah, Kec. Ternate Sel., Kota Ternate, Maluku Utara)</p>
+      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.457793544545!2d127.36304550000001!3d0.7702524999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cb5bd16ed68ff%3A0x72c6aab15569aa85!2sD%27Mozaik%20Cafe!5e0!3m2!1sid!2sid!4v1759327195743!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+      
+      <a href="https://www.google.com/maps/place/D'Mozaik+Cafe/@0.7702525,127.3630455,17z/data=!3m1!4b1!4m6!3m5!1s0x329cb5bd16ed68ff:0x72c6aab15569aa85!8m2!3d0.7702525!4d127.3630455!16s%2Fg%2F11nch40v43?entry=ttu&g_ep=EgoyMDI1MDkyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-button">Buka Peta</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Terima kasih atas kehadiran dan doa Bapak/Ibu/Saudara/i. Semoga keberkahan dan kebahagiaan senantiasa menyertai kita semua.</p>
+  </footer>
+
+  <audio id="bgm" loop muted>
+    <source src="bg.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Countdown Function (Menggunakan satu kotak teks seperti di kode awal)
+    const targetDate = new Date("Oct 4, 2025 11:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        countdownEl.innerHTML = "Acara sedang berlangsung";
+        return;
+      }
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }
+    
+    updateCountdown(); // Jalankan sekali di awal
+    setInterval(updateCountdown, 1000); // Update setiap detik
+
+    // Quotes rotator (Dikembalikan)
+    const quotes = [
+      "Puncak ilmu bukan hanya gelar, tapi manfaatnya bagi sesama.",
+      "Kesabaran, doa, dan ketekunan adalah kunci perjalanan ini.",
+      "Setiap pencapaian adalah titipan, setiap titipan adalah amanah.",
+      "Ilmu yang bermanfaat akan menjadi warisan abadi."
+    ];
+    let index = 0;
+    const quoteElement = document.getElementById("quote-text");
+    function showQuote(){
+      quoteElement.style.opacity = 0;
+      setTimeout(()=>{
+        quoteElement.innerHTML = quotes[index];
+        quoteElement.style.opacity = 1;
+        index = (index+1)%quotes.length;
+      }, 500);
+    }
+    showQuote();
+    setInterval(showQuote, 4000);
+
+    // Musik autoplay & loop
+    const bgm = document.getElementById('bgm');
+    window.addEventListener('load', () => {
+      bgm.play().then(() => { bgm.muted = false; })
+      .catch(() => { console.log("Autoplay gagal, tunggu interaksi user"); });
+    });
+
+    // Fallback klik halaman supaya musik pasti nyala
+    document.body.addEventListener('click', () => {
+      bgm.play();
+    }, { once: true });
+  </script>
+</body>
+</html>
